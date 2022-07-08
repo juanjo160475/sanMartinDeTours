@@ -20,7 +20,7 @@ class loginController extends Controlador {
       if ($resultado != 0){
        
        
-        $this->vista = 'cursos';
+        $this->vista = 'prueba';
         session_start();
         $_SESSION ["usuario"] = $_POST["correo"];
         
