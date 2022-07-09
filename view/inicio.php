@@ -1,5 +1,5 @@
 
-   <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,7 +18,7 @@
         rel="stylesheet" />
     <!-- CSS Bootstrap y Página-->
     <link href="css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="bootstrap.css"/>
+    <link rel="stylesheet" href="bootstrap.css">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -28,7 +28,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container px-4 px-lg-5">
-            <img src="assets/Logo.png" id="logo" style="width: 140px; height: 80px;"></img>
+            <a href="index.html"><img src="assets/Logo2.png" id="logo" style="width: 140px; height: 80px;"></img></a>
             <!--<a class="navbar-brand ml-2" href="#page-top">San Martin de Tours</a>-->
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -40,16 +40,11 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#slideMVV">Quienes somos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Colaborar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="donacion.html">Colaborar</a></li>
                     <li class="nav-item"><a class="nav-link" href="">Prensa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.php?controller=cursos&action=list">Cursos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Noticias</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cursos.html">Cursos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
                 </ul>
-                <form class="d-flex" action="index.php?controller=login&action=compruebaLogin" method="post">
-                    <input class="form-control me-2" type="text" name="correo" placeholder="Username" />
-                    <input class="form-control me-2" type="password" name="pass" placeholder="Password" />
-                    <button class="btn btn-warning" type="submit">Login</button>
-                </form>
             </div>
         </div>
     </nav>
@@ -59,7 +54,7 @@
             <div class="d-flex justify-content-center">
                 <div class="text-center">
                     <h1 class="mx-auto my-0 text-uppercase">San Martín de Tours</h1>
-                    <h2 class="text-white-50 mx-auto mt-2 mb-5">Lorem</h2>
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5"></h2>
                     <a class="btn btn-primary" href="#slideMVV">Comenzar</a>
                 </div>
             </div>
@@ -141,7 +136,7 @@
         </div>
     </section>
     <!-- Historia-->
-    <section class="projects-section bg-light">
+    <section class="historia">
         <div class="container px-4 px-lg-5">
             <!-- Featured Project Row-->
             <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
@@ -159,88 +154,52 @@
 
     </section>
     <!-- Contacto-->
-    <section class="bg-black">
+    <section id="contact" class="contact">
         <div class="container">
-            <div class="row text-center">
-                <h1 class="mt-5 mb-5">Contáctanos</h1>
+            <div><h1 class="titulos">Contactanos</h1></div>
+            <hr class="solid">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div id="googlemap"></div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <form class="my-form" action="https://submit-form.com/rnLawael">
+                        <div class="form-group">
+                            <label for="form-name">Nombre</label>
+                            <input type="name" class="form-control" id="form-name" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="form-email">Correo</label>
+                            <input type="email" class="form-control" id="form-email" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="form-message">Mensaje</label>
+                            <textarea class="form-control" id="form-message" placeholder=""></textarea>
+                        </div>
+                        <input type="hidden" name="_redirect" value="false" />
+                        <button class="btn btn-default" type="submit">Enviar</button>                
+                    </form>
+                </div>
             </div>
-            <form id="form" action="https://submit-form.com/rnLawael">
-                <div class="row">
-                    <div class="col">
-                        <label for="name">Name</label>
-                    </div>
-                    <div class="col">
-                        <label for="email">Email</label>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <input type="text" id="name" name="name" placeholder="Name" required="" />
-                        </div>
-                        <div class="col">
-                            <input type="email" id="email" name="email" placeholder="Email" required="" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col"><textarea id="message" name="message" placeholder="Message" required=""></textarea>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col" id="boton">
-                        <button type="submit" class="w-100 btn text-white mb-5"
-                            style="background-color: #91be26">Send</button>
-                    </div>
-                </div>
-            </form>
         </div>
     </section>
-    <!-- Signup-->
-    <section class="signup-section" id="signup">
+    <!-- Newsletter-->
+    <section class="signup-section bg-light" id="signup">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5">
                 <div class="col-md-10 col-lg-8 mx-auto text-center">
                     <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
                     <h1 class="text-white mb-5">Newsletter</h1>
                     <h2 class="text-white mb-5">Suscribite para recibir novedades:</h2>
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- * * SB Forms Contact Form * *-->
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- This form is pre-integrated with SB Forms.-->
-                    <!-- To make this form functional, sign up at-->
-                    <!-- https://startbootstrap.com/solution/contact-forms-->
-                    <!-- to get an API token!-->
-                    <form class="form-signup" id="contactForm" data-sb-form-api-token="API_TOKEN">
+
+                    <form id="contactForm" action="https://gmail.us17.list-manage.com/subscribe/post?u=91997d9f2f569f399cc7c2f72&amp;id=b511ad553b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                         <!-- Email address input-->
                         <div class="row input-group-newsletter">
                             <div class="col"><input class="form-control" id="emailAddress" type="email"
-                                    placeholder="Enter email address..." aria-label="Enter email address..."
+                                    placeholder="Correo..." aria-label="Ingresar correo"
                                     data-sb-validations="required,email" /></div>
-                            <div class="col-auto"><button class="btn btn-primary disabled" id="submitButton"
-                                    type="submit">Notify Me!</button></div>
-                        </div>
-                        <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:required">An email is
-                            required.</div>
-                        <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:email">Email is not valid.
-                        </div>
-                        <!-- Submit success message-->
-                        <!---->
-                        <!-- This is what your users will see when the form-->
-                        <!-- has successfully submitted-->
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3 mt-2 text-white">
-                                <div class="fw-bolder">Form submission successful!</div>
-                                To activate this form, sign up at
-                                <br />
-                                <a
-                                    href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                            </div>
-                        </div>
-                        <!-- Submit error message-->
-                        <!---->
-                        <!-- This is what your users will see when there is-->
-                        <!-- an error submitting the form-->
-                        <div class="d-none" id="submitErrorMessage">
-                            <div class="text-center text-danger mb-3 mt-2">Error sending message!</div>
+                            <div class="col-auto"><button class="btn btn-primary" id="submitButton"
+                                    type="submit">Suscribirme</button></div>
                         </div>
                     </form>
                 </div>
@@ -276,10 +235,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-    <!-- * *                               SB Forms JS                               * *-->
-    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -287,6 +242,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+        <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-O0_kYkgNot1Csv8Y8lcecnffUtwl6hw&callback=initMap">
+    </script>
+    
 </body>
 
 </html>

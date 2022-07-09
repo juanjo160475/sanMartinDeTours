@@ -26,7 +26,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container px-4 px-lg-5">
-            <img src="assets/Logo.png" id="logo" style="width: 140px; height: 80px;"></img>
+            <a href="index.html"><img src="assets/Logo2.png" id="logo" style="width: 140px; height: 80px;"></img></a>
             <!--<a class="navbar-brand ml-2" href="#page-top">San Martin de Tours</a>-->
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -36,12 +36,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#slideMVV">Quienes somos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Colaborar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Prensa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Cursos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Noticias</a></li>
+					<li class="nav-item"><a class="nav-link" href="index.html#slideMVV">Quienes somos</a></li>
+					<li class="nav-item"><a class="nav-link" href="index.html#contact">Contacto</a></li>
+					<li class="nav-item"><a class="nav-link" href="">Colaborar</a></li>
+					<li class="nav-item"><a class="nav-link" href="">Prensa</a></li>
+					<li class="nav-item"><a class="nav-link" href="cursos.html">Cursos</a></li>
+					<li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
                 </ul>
             </div>
         </div>
@@ -219,10 +219,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<!-- * *                               SB Forms JS                               * *-->
-<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

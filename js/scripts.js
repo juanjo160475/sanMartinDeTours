@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', event => {
             document.getElementById("logo").src = ('assets/Logo2.png');
         } else {
             navbarCollapsible.classList.add('navbar-shrink');
-            document.getElementById("logo").src = ('assets/Logo.png');
+            document.getElementById("logo").src = ('assets/Logo2.png');
         }
 
     };
@@ -85,3 +85,33 @@ $(document).ready(function() {
   
   });
   
+  /*Filtro cursos*/
+
+  var buttonUp = () => {
+    const input = document.querySelector(".searchbox-input");
+    const cards = document.getElementsByClassName("card");
+    let filter = input.value
+    for (let i = 0; i < cards.length; i++) {
+        let title = cards[i].querySelector(".card-body");
+        if (title.innerText.indexOf(filter) > -1) {
+            cards[i].classList.remove("d-none")
+        } else {
+            cards[i].classList.add("d-none")
+        }
+    }
+}
+
+function initMap() {
+    const salta = { lat:-24.8039906, lng:-65.4260532};
+    const map = new google.maps.Map(document.getElementById("googlemap"), {
+      zoom: 15,
+      center: salta,
+    });
+    // The marker, positioned at Uluru
+    const marker = new google.maps.Marker({
+      position: salta,
+      map: map,
+    });
+  }
+  
+  window.initMap = initMap;

@@ -3,14 +3,16 @@
 :root {
   --colornavbar: rgba(64,29,21,0.9);
   --colorfooter: rgba(83, 8, 8, 0.925);
-  --coloresecundario:;
-  --colorterciario: ;
+  --coloresecundario:rgba(163, 191, 186);
+  --colorterciario: rgba(180, 196, 217);
+  --cuarto:rgba(191, 183, 142, 0.925);;;
   --fontprinc: "Nunito";
   --colortitulos: rgb(43, 44, 48);
 }
 
 html {
   scroll-padding-top: calc(4.5rem - 1px);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -19,7 +21,7 @@ body {
 
 #mainNav {
   min-height: 3.5rem;
-  background-color: #fff;
+  background-color: var(--colorterciario);
 }
 #mainNav .navbar-toggler {
   font-size: 80%;
@@ -72,8 +74,9 @@ body {
   #mainNav.navbar-shrink {
     background-color:var(--colornavbar);
   }
+  
   #mainNav.navbar-shrink .navbar-brand {
-    color: #000;
+    color: rgb(0, 0, 0);
   }
 
   /*Color links al scrollear*/
@@ -163,27 +166,31 @@ body {
   margin-bottom: 5rem;
 }
 
-.projects-section {
+.historia {
   padding: 10rem 0;
+  background: linear-gradient(180deg, rgba(47,47,47,1) 0%, var(--colorterciario) 100%);
 }
-.projects-section .featured-text {
+.historia .featured-text {
   padding: 2rem;
+  background: -webkit-linear-gradient(#eee, rgba(255, 255, 255, 0.9));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 @media (min-width: 992px) {
-  .projects-section .featured-text {
+  .historia .featured-text {
     padding: 0 0 0 2rem;
     border-left: 0.5rem solid #64a19d;
   }
 }
-.projects-section .project-text {
+.historia .project-text {
   padding: 3rem;
   font-size: 90%;
 }
 @media (min-width: 992px) {
-  .projects-section .project-text {
+  .historia .project-text {
     padding: 5rem;
   }
-  .projects-section .project-text hr {
+  .historia .project-text hr {
     border-color: #64a19d;
     border-width: 0.25rem;
     width: 30%;
@@ -192,7 +199,7 @@ body {
 
 .signup-section {
   padding: 10rem 0;
-  background: url("../assets/img/bg-masthead.jpg");
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../assets/img/newsletter.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -209,28 +216,29 @@ body {
   border: 0;
 }
 
-.contact-section {
+.contact {
   padding-top: 5rem;
+  background-color: var(--colorterciario);
 }
-.contact-section .card {
+.contact .card {
   border: 0;
   border-bottom: 0.25rem solid #64a19d;
 }
-.contact-section .card h4, .contact-section .card .h4 {
+.contact .card h4, .contact .card .h4 {
   font-size: 0.8rem;
   font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   text-transform: uppercase;
   letter-spacing: 0.15rem;
 }
-.contact-section .card hr {
+.contact .card hr {
   border-color: #64a19d;
   border-width: 0.25rem;
   width: 3rem;
 }
-.contact-section .social {
+.contact .social {
   margin-top: 5rem;
 }
-.contact-section .social a {
+.contact .social a {
   text-align: center;
   height: 3rem;
   width: 3rem;
@@ -239,10 +247,10 @@ body {
   line-height: 3rem;
   color: rgba(255, 255, 255, 0.3);
 }
-.contact-section .social a:hover {
+.contact .social a:hover {
   color: rgba(255, 255, 255, 0.5);
 }
-.contact-section .social a:active {
+.contact .social a:active {
   color: #fff;
 }
 
@@ -688,10 +696,22 @@ input {
   opacity: 0;
 }
 .slider--el-heading {
-  font-size: 5vw;
-  font-family:cursive;
+  font-size: 8rem;
+  font-family:var(--fontprinc);
+  font-weight: 700px;
   text-transform: uppercase;
   color:#cccccc;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .slider--el-heading {
+    font-size: 4rem;
+    font-family:var(--fontprinc);
+    font-weight: 700px;
+    text-transform: uppercase;
+    color:#cccccc;
+  }
 }
 
 /*.contenedor{
@@ -765,6 +785,27 @@ footer{
   margin-right: 23%;
 }
 
+.my-form {
+  color: #305896;
+}
+.my-form .btn-default {
+  background-color: #305896;
+  color: #fff;
+  border-radius: 0;
+}
+.my-form .btn-default:hover {
+  background-color: #4498C6;
+  color: #fff;
+}
+.my-form .form-control {
+  border-radius: 0;
+}
+
+.titulos{
+  font-family: var(--fontprinc);
+  font-weight: 700px;
+}
+
 /*Header cursos*/
 
  .headercursos{
@@ -785,10 +826,88 @@ footer{
   font-weight: 700;
   color:var(--colortitulos);
  }
-/*noticias*/
-h1{
-  font-size: 40px;
+
+ .tituloscursos{
+  font-family: var(--fontprinc);
+  font-weight: 700;
+  color:var(--colortitulos);
+ }
+
+.inscripcion{
+  float: right;
 }
+
+.todoscursos{
+  background: var(--colorterciario);
+}
+
+/* Solid border */
+hr.solid {
+  border-top: 3px solid #bbb;
+  border-color: white;
+}
+
+.card-custom-img{
+background-image: url(../assets/img/cursos/electricidad.jpg);
+}
+  
+.searchbox-input{
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('../assets/searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  transition: width 0.4s ease-in-out;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  border: none;
+  position: relative;
+  margin-bottom: 30px;
+  box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
+}
+
+.l-bg-blue-dark {
+  background: linear-gradient(to right, #373b44, #4286f4) !important;
+  color: #fff;
+  border-width: 100px;
+  border-style: double;
+}
+
+card .card-statistic-3 .card-icon-large .fas, .card .card-statistic-3 .card-icon-large .far, .card .card-statistic-3 .card-icon-large .fab, .card .card-statistic-3 .card-icon-large .fal {
+  font-size: 110px;
+}
+
+.card-icon-large{
+  font-size: 110px;
+}
+
+.card-icon {
+  text-align: center;
+  line-height: 50px;
+  margin-left: 10px;
+  color: #000;
+  position: absolute;
+  right: 5px;
+  top: 20px;
+  opacity: 0.1;
+}
+
+
+.searchbox-input:focus {
+  width: 100%;
+}
+
+
+/*noticias*/
+
 .bannersmdtnoticias {
   position: relative;
   width: 100%;
@@ -876,4 +995,11 @@ h1{
 }
 #news-feed figure figcaption span{
   color: white;
+}
+
+#googlemap{
+  border-color: #275dc2b4;
+  border-width: 0.5rem;
+  border-style:groove;
+  height:400px;
 }
