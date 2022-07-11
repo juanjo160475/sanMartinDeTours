@@ -16,15 +16,15 @@ require_once $controller_path;
 $controllerName = $_GET["controller"].'Controller';
 $controller = new $controllerName();
 
-/* Check if method is defined */
+/* SI EXISTE LA ACCION (METODO) CARGA EL ARRAY CON LOS DATOS A MOSTRAR */
 $dataToView["data"] = array();
 if(method_exists($controller,$_GET["action"])) $dataToView["data"]
  = $controller->{$_GET["action"]}();
 
 
 /* traer vistas */
-//require_once 'view/template/header.html';
+require_once 'view/template/header.html';
 require_once 'view/'.$controller->vista.'.php';
-//require_once 'view/template/footer.html';
+require_once 'view/template/footer.html';
 
 ?>

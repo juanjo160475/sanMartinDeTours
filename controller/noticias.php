@@ -2,7 +2,7 @@
 
 
 require_once 'controller/controlador.php';
-require_once 'model/noticiasModel.php';
+require_once 'model/noticiasModelo.php';
 
 class noticiasController extends Controlador {
 	
