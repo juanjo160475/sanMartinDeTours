@@ -93,7 +93,7 @@
 					<hr class="solid">
 					<div class="input">
 						<input type="search" placeholder="Buscar" name="search" class="searchbox-input"
-							onkeyup="buttonUp();" required>
+							onkeyup="buttonUp()" required>
 					</div>
 					<hr class="solid">
 				</div>
