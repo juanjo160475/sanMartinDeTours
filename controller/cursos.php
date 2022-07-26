@@ -15,6 +15,8 @@ class cursosController extends Controlador {
 		$this->noteObj = new cursosModelo();
 	}
 
+	
+
 	public function save(){
 		$this->vista = 'edit_note';
 		$this->titulo_pagina = 'Editar nota';
@@ -24,6 +26,10 @@ class cursosController extends Controlador {
 		return $result;
 	}
 
-	
+	public function mostrar_formulario (){
+		$this->vista = 'administrador/editCursos';
+		return $this->list();
+
+	}
 }
 ?>

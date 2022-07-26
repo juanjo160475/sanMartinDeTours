@@ -1,3 +1,10 @@
+
+<script>
+        // se oculta el header
+        const cabecera = document.body.querySelector('#mainNav');
+        cabecera.style.display = 'none' 
+        
+</script>
 <?php
 $id = $titulo = $descripcion = $foto = "";
 

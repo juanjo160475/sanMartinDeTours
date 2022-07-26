@@ -23,7 +23,7 @@ require_once 'model/modelo.php';
         $stmt -> bindValue(":correo",$correo);
         $stmt -> bindValue(":pass",$pass);
 		$stmt->execute();
-        return $stmt -> rowCount();
+        return $stmt;
 
     }	
 

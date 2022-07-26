@@ -6,7 +6,7 @@ require_once 'model/modelo.php';
 	
 
 	public function __construct() {
-        $this->table = 'carrusel';
+        $this->table = 'curso';
 	}
 /* Save note */
 public function save($param,$archivo){
@@ -72,7 +72,18 @@ public function save($param,$archivo){
     return $id;	
 
 }
-	
+// sobreescribimos
+   public function getNotes(){
+    $this->getConection();
+    $sql = "SELECT * FROM curso
+    INNER JOIN sede ON curso.id_sede = sede.id_sede
+     INNER JOIN imagen ON curso.id_imagen = imagen.id_imagen";
+    $stmt = $this->conection->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+}
+
 
 	
 

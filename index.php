@@ -1,14 +1,13 @@
 <?php 
-
+header('Content-type: text/html; charset=utf-8');
 require_once 'config/config.php';
 require_once 'model/db.php';
-
+// si no existe el controlador y la accion la carga desde el config
 if(!isset($_GET["controller"])) $_GET["controller"] = constant("DEFAULT_CONTROLLER");
 if(!isset($_GET["action"])) $_GET["action"] = constant("DEFAULT_ACTION");
 
+// la ruta donde esta el controlador
 $controller_path = 'controller/'.$_GET["controller"].'.php';
-
-/* ver si existe el controlador*/
 if(!file_exists($controller_path)) $controller_path = 'controller/'.constant("DEFAULT_CONTROLLER").'.php';
 
 /* traer el controlador*/
