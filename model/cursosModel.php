@@ -72,8 +72,8 @@ public function save($param,$archivo){
     return $id;	
 
 }
-// sobreescribimos
-   public function getNotes(){
+// lee los cursos para mostrarlos al usuario 
+   public function getCursos(){
     $this->getConection();
     $sql = "SELECT * FROM curso
     INNER JOIN sede ON curso.id_sede = sede.id_sede

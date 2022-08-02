@@ -17,15 +17,21 @@ abstract class  Controlador{
 	/* recupera para editar */
 	public function edit($id = null){
 		$this->titulo_pagina = 'Editar nota';
-		$this->vista = 'edit_note';
+		//$this->vista = 'edit_note';
+		$this->vista = 'administrador/formularioSede';
 		if(isset($_GET["id"])) $id = $_GET["id"];
 		return $this->noteObj->getNoteById($id);
 	}
 
-	/* crear o update nota */
-	//public function save(){
-		
-	//}
+	/* crear o update */
+	public function save(){
+		$this->vista = 'edit_note';
+		$this->titulo_pagina = 'Editar nota';
+		$id = $this->noteObj->save($_POST);
+		$result = $this->noteObj->getNoteById($id);
+		$_GET["response"] = true;
+		return $result;
+	}
 
 	/* Confirmar  delete */
 	public function confirmDelete(){

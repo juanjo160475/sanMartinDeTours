@@ -13,7 +13,7 @@ abstract class Modelo{
 		$this->conection = $dbObj->conection;
 	}
 
-	/* Get all notes */
+	/* Get all notes recibe como argumento la tabla*/
 	public function getNotes(){
 		$this->getConection();
 		$sql = "SELECT * FROM ".$this->table;
@@ -23,11 +23,11 @@ abstract class Modelo{
 		return $stmt->fetchAll();
 	}
 
-	/* Get note by id */
-	public function getNoteById($id){
+	/* Get note by id , id para buscar y idcol es el nombre de la columna donde buscar*/
+	public function getNoteById($id,$idCol){
 		if(is_null($id)) return false;
 		$this->getConection();
-		$sql = "SELECT * FROM ".$this->table. " WHERE id = ?";
+		$sql = "SELECT * FROM ".$this->table. " WHERE ".$idCol." = ?";
 		$stmt = $this->conection->prepare($sql);
 		$stmt->execute([$id]);
 
@@ -35,24 +35,29 @@ abstract class Modelo{
 	}
 
 	/* Save note */
-	public function save($param,$archivo){
+	/*public function save($param,$archivo){
 		
-    }	
+    }	*/
 
 		
 
 	/* Delete note by id */
-	public function deleteNoteById($id){
+	public function deleteNoteById($id,$idCol){
 		
 		$this->getConection();
 		/*$carpeta_destino = $_SERVER['DOCUMENT_ROOT'] .'/fundacion/imagenes/inicio/';
 		$data = $this->getNoteById($id);
 		$nombreArchivo = $data["foto"];
 		unlink($carpeta_destino.$nombreArchivo);*/
-		
-		$sql = "DELETE FROM ".$this->table. " WHERE id = ?";
+		echo "tabla ".$this->table. " col ".$idCol;
+		$sql = "DELETE FROM ".$this->table." WHERE ".$idCol."  = ?";
 		$stmt = $this->conection->prepare($sql);
 		return $stmt->execute([$id]);
+	}
+
+	public function setTable ($nombreTabla){
+		$this->table=$nombreTabla;
+
 	}
 
 }

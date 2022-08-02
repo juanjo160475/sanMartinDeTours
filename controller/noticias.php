@@ -15,14 +15,7 @@ class noticiasController extends Controlador {
 		$this->noteObj = new noticiasModelo();
 	}
 
-	public function save(){
-		$this->vista = 'edit_note';
-		$this->titulo_pagina = 'Editar nota';
-		$id = $this->noteObj->save($_POST, $_FILES);
-		$result = $this->noteObj->getNoteById($id);
-		$_GET["response"] = true;
-		return $result;
-	}
+	
 
 	
 }
