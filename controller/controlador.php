@@ -11,14 +11,15 @@ abstract class  Controlador{
 	/* Lista toda  la tabla */
 	public function list(){
 		$this->titulo_pagina = '';
-		return $this->noteObj->getNotes();
+		$this->vista = "cursos";
+		return $this->noteObj->getCursos();
 	}
 
 	/* recupera para editar */
 	public function edit($id = null){
-		$this->titulo_pagina = 'Editar nota';
+		$this->titulo_pagina = '';
 		//$this->vista = 'edit_note';
-		$this->vista = 'administrador/formularioSede';
+		$this->vista = 'formularioCursos';
 		if(isset($_GET["id"])) $id = $_GET["id"];
 		return $this->noteObj->getNoteById($id);
 	}

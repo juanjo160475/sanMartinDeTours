@@ -24,13 +24,12 @@ abstract class Modelo{
 	}
 
 	/* Get note by id , id para buscar y idcol es el nombre de la columna donde buscar*/
-	public function getNoteById($id,$idCol){
+	public function getNoteById($id){
 		if(is_null($id)) return false;
 		$this->getConection();
-		$sql = "SELECT * FROM ".$this->table. " WHERE ".$idCol." = ?";
+		$sql = "SELECT * FROM ".$this->table." WHERE id = ?";
 		$stmt = $this->conection->prepare($sql);
 		$stmt->execute([$id]);
-
 		return $stmt->fetch();
 	}
 
@@ -42,15 +41,15 @@ abstract class Modelo{
 		
 
 	/* Delete note by id */
-	public function deleteNoteById($id,$idCol){
+	public function deleteNoteById($id){
 		
 		$this->getConection();
 		/*$carpeta_destino = $_SERVER['DOCUMENT_ROOT'] .'/fundacion/imagenes/inicio/';
 		$data = $this->getNoteById($id);
 		$nombreArchivo = $data["foto"];
 		unlink($carpeta_destino.$nombreArchivo);*/
-		echo "tabla ".$this->table. " col ".$idCol;
-		$sql = "DELETE FROM ".$this->table." WHERE ".$idCol."  = ?";
+	
+		$sql = "DELETE FROM ".$this->table." WHERE id  = ?";
 		$stmt = $this->conection->prepare($sql);
 		return $stmt->execute([$id]);
 	}

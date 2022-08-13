@@ -4,6 +4,8 @@
 require_once 'controller/controlador.php';
 require_once 'model/cursosModel.php';
 require_once 'model/sedeModelo.php';
+require_once 'model/imagenModel.php';
+
 
 class cursosController extends Controlador {
 	
@@ -13,15 +15,17 @@ class cursosController extends Controlador {
 	public function __construct() {
 		$this->vista = 'cursos';
 		$this->titulo_pagina = '';
-		$this->noteObj = new cursosModelo();
+		$this->noteObj = new cursosModel();
 	}
 
 	
 
 	
+	/*carga la pagina listar cursos para el edministrador , 
+	se muestran las tablas por separado*/ 
 	
-	/*carga la pagina listar cursos para el edministrador , se muestran las tablas por separado*/ 
-	public function mostrar_formulario (){
+	
+public function mostrar_formulario (){
 		$this->vista = 'administrador/listCursos';
 		$data ["cursos"] = $this->noteObj->getNotes();
 		$this->noteObj->setTable("sede");
@@ -38,30 +42,47 @@ class cursosController extends Controlador {
 		$this->vista = 'administrador/formularioSede';
 		$this->noteObj = new sedeModelo();
 		if(isset($_GET["id"])) $id = $_GET["id"];
-		return $this->noteObj->getNoteById($id,"id_sede");
+		return $this->noteObj->getNoteById($id);
 	}
-//sobreescribe el padre probisorio
+	public function editImagen ($id=null){
+		$this->titulo_pagina = 'Editar Imagen';
+		$this->vista = 'administrador/formularioImagen';
+		$this->noteObj = new imagenModel();
+		if(isset($_GET["id"])) $id = $_GET["id"];
+		return $this->noteObj->getNoteById($id);
+	}
+
+	public function editCurso ($id=null){
+		$this->titulo_pagina = 'Editar Sede';
+		$this->mostrar_formulario();
+		$this->noteObj = new cursosModel();
+		if(isset($_GET["id"])) $id = $_GET["id"];
+		return $this->noteObj->getNoteById($id);
+	}
+//sobreescribe el padre 
     public function confirmDelete(){
 		$this->titulo_pagina = 'Eliminar nota';
 		$this->vista = 'confirm_delete_note';
-		$this->noteObj = new sedeModelo();
-		return $this->noteObj->getNoteById($_GET["id"],"id_sede");
+		$modelo= $_GET ["model"];
+		$this->noteObj = new $modelo();
+		return $this->noteObj->getNoteById($_GET["id"]);
 	}
-
-	  public function deleteSede(){
+	//sobreescribe el padre
+        public function delete(){
 		$this->titulo_pagina  = '';
         $this->vista = 'delete_note';
-		$this->noteObj = new sedeModelo();
-		return $this->noteObj->deleteNoteById($_POST["id"],"id_sede");
+		$modelo= $_GET ["model"];
+		$this->noteObj = new $modelo();
+		return $this->noteObj->deleteNoteById($_POST["id"]);
 	}
-	// save sede y cursos SEPARA ESTO EN CONTROLADORES PARA CADA UNO PONER ARGUMENTO A ELIMINAR Y BUSCAR POR ID 
+	
 	public function save(){
-		$this->vista = 'administrador/formularioCursos';
+		$this->vista = 'administrador/formularioImagen';
 		$this->titulo_pagina = 'Formularios';
 		$modelo= $_POST ["model"];
 		$this->noteObj = new $modelo();
-		$id = $this->noteObj->save($_POST);
-		$result = $this->noteObj->getNoteById($id,"id_sede");
+		$id = $this->noteObj->save($_POST,$_FILES);
+		$result = $this->noteObj->getNoteById($id);
 		$_GET["response"] = true;
 		return $result;
 	}

@@ -8,7 +8,7 @@
 <?php
 $id = $nombre = $direccion = $telefono ="";
 
-if(isset($dataToView["data"]["id_sede"])) $id = $dataToView["data"]["id_sede"];
+if(isset($dataToView["data"]["id"])) $id = $dataToView["data"]["id"];
 if(isset($dataToView["data"]["nombre_sede"])) $nombre = $dataToView["data"]["nombre_sede"];
 if(isset($dataToView["data"]["direccion"])) $direccion = $dataToView["data"]["direccion"];
 if(isset($dataToView["data"]["telefono"])) $telefono = $dataToView["data"]["telefono"];
