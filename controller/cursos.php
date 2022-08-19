@@ -53,11 +53,13 @@ public function mostrar_formulario (){
 	}
 
 	public function editCurso ($id=null){
-		$this->titulo_pagina = 'Editar Sede';
-		$this->mostrar_formulario();
+		$this->titulo_pagina = '';
+		$data= $this->mostrar_formulario();
 		$this->noteObj = new cursosModel();
 		if(isset($_GET["id"])) $id = $_GET["id"];
-		return $this->noteObj->getNoteById($id);
+		$data ["editCurso"]= $this->noteObj->getNoteById($id);
+		return $data;
+		//return $this->noteObj->getNoteById($id);
 	}
 //sobreescribe el padre 
     public function confirmDelete(){

@@ -1,0 +1,101 @@
+/*contenedor titulos*/
+.contenedor-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+}
+.contenedor-titulo h3{
+   
+    font-size: 50px;
+}
+
+
+
+/* contenedor ´principal y flechas  */
+.contenedor-principal {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 80%;
+    margin: 30px;
+}
+
+.contenedor-principal .flecha-izquierda,
+.contenedor-principal .flecha-derecha{
+    position: absolute;
+    border: none;
+    background: rgba(0, 0,0, 0.3);
+    font-size: 40px;
+    height: 50%;
+    top: calc(50%-25%);
+    line-height: 40px;
+    width: 50px;
+    color:#fff;
+    cursor: pointer;
+    z-index: 500;
+    transition: .2s ease all;
+}
+
+.contenedor-principal .flecha-izquierda:hover,
+.contenedor-principal .flecha-derecha:hover{
+background: rgba(0, 0,0, .9);
+}
+
+
+
+.contenedor-principal .flecha-izquierda{
+    left: 0;
+}
+.contenedor-principal .flecha-derecha{
+    right: 0;
+}
+
+/* cotenedor carrusel */
+.contenedor-carrousel{
+    width: 99%;
+    overflow: hidden;
+    padding: 20px;
+    scroll-behavior: smooth;
+}
+.contenedor-carrousel .carrousel{
+    display: flex;
+}
+
+.contenedor-carrousel .carrousel .imagen{
+    min-width: 20%;
+    transition: .3s all ease;
+    box-shadow: 5px 5px 10px rgba(0, 0,0, 0.3);
+
+}
+
+.contenedor-carrousel .carrousel .imagen.hover{
+    transform: scale(1.2);
+    transform-origin: center;
+
+}
+
+.contenedor-carrousel .carrousel .imagen img {
+width: 100%;
+vertical-align: top;
+}
+
+
+/* media queries */
+@media screen and (max-width: 800px) {
+    
+
+.contenedor-carrousel{
+    overflow: visible;
+}
+
+.contenedor-carrousel .carrousel{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.contenedor-principal .flecha-izquierda,
+.contenedor-principal .flecha-derecha{
+    display: none;
+}
+}

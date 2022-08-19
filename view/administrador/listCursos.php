@@ -12,7 +12,12 @@ if(isset($_SESSION["usuario"]))
 
 	<div class="container-fluid headercursos" >	
 		   <div class="row">
-			    <h1 class="text-center"><b>Imagenes</b></h1>
+			    <h1 class="text-center"><b>Imagenes</b> <button type="button"> 
+							     <a href="index.php?controller=cursos&action=editImagen">
+								 <img src="assets\plus.svg" 
+						         height ="30" width="30" /></a>
+								</button></h1>
+				
 				<?php 
 					
                 foreach($dataToView["data"] ["imagenes"] as $note) { 
@@ -37,11 +42,10 @@ if(isset($_SESSION["usuario"]))
 						         height ="30" width="30" /></a>
 								</button>
 
-								<button type="button"> 
-							     <a href="index.php?controller=cursos&action=editImagen">
-								 <img src="assets\plus.svg" 
-						         height ="30" width="30" /></a>
-								</button>
+								<input type="radio" name="imagen" value= <?php echo $note['id'];?> id="interesado"> 
+								<label for="interesado">Agregar al nuevo curso</label> 
+
+								
                         	</p>
                   	  </div>
                	   </div>
@@ -69,7 +73,11 @@ if(isset($_SESSION["usuario"]))
 				<div class="col-md-6 border-end">
 				
 				<div class="pt-3 row text-center tituloscursos">
-				<h1>Sedes</h1>
+				<h1>Sedes <button type="button" class="inscripcion btn btn-primary btn-sm align-end"> 
+							     <a href="index.php?controller=cursos&action=editSede">
+								 <img src="assets\plus.svg" 
+						         height ="30" width="30" /></a>
+								</button></h1>
 			    </div>
 				
 				<?php foreach($dataToView["data"] ["sedes"]as $note) {?>
@@ -94,12 +102,10 @@ if(isset($_SESSION["usuario"]))
 								 <img src="assets\delete.svg" 
 						         height ="30" width="30" /></a>
 								</button>
+								<input type="radio" name="sede" value= <?php echo $note['id']; ?> id="interesado"> 
+								<label for="interesado">Agregar a nuevo curso</label> 
 
-								<button type="button" class="inscripcion btn btn-primary btn-sm align-end"> 
-							     <a href="index.php?controller=cursos&action=editSede">
-								 <img src="assets\plus.svg" 
-						         height ="30" width="30" /></a>
-								</button>
+								
 						 </div>
 					 </div>
 					 <?php }?>
@@ -109,37 +115,37 @@ if(isset($_SESSION["usuario"]))
 				<div class="col">
 
 				<div class="pt-3 row text-center tituloscursos">
-				<h1>Cursos</h1>
+				<h1>Cursos <button type="button" class="inscripcion btn btn-primary btn-sm align-end"> 
+							     <a href="index.php?controller=cursos&action=editCurso" >
+								 <img src="assets\plus.svg" 
+						         height ="30" width="30" /></a>
+								</button></h1>
 			    </div>
 				<?php foreach($dataToView["data"] ["cursos"]as $note) {?>
 				    <div class="mt-1 card card-cursos l-bg-blue-dark">
 					
 					   <div class="card-body">
 							<div class="card-icon card-icon-large"></div>
-							 <h4 class="card-title"><?php echo $note['titulo'];?></h4>
-							 <p class="card-text"><?php echo  date("d/m/y", strtotime($note['fechaInicio']));?></p>
-							 <p class="card-text"><?php echo "sede: ".$note['id_sede'];?></p>
+							 <h4 class="card-title"> <?php echo $note['titulo'];?></h4>
+							 <p class="card-fecha"><?php echo  date("d/m/y", strtotime($note['fechaInicio']));?></p>
+							 <p class="card-sede"><?php echo "sede: ".$note['id_sede'];?></p>
 
 							 <!-- ******** botones delete, edit, nuevo curso***** -->
 							   <button type="button" class="inscripcion btn btn-primary btn-sm align-end" > 
 							     <a href="index.php?controller=cursos&action=editCurso&id=
                                  <?php echo $note['id']; ?>">
-								 <img src="assets\edit.svg" 
+								 <img src="assets/edit.svg" 
 						         height ="30" width="30" /> </a>
 								</button>
 
 								<button type="button" class="inscripcion btn btn-primary btn-sm align-end"> 
 								<a href="index.php?controller=cursos&action=confirmDelete&id=
                                  <?php echo $note['id'];?>&model=cursosModel">
-								 <img src="assets\delete.svg" 
+								 <img src="assets/delete.svg" 
 						         height ="30" width="30" /></a>
 								</button>
 
-								<button type="button" class="inscripcion btn btn-primary btn-sm align-end"> 
-							     <a href="index.php?controller=cursos&action=editCurso" >
-								 <img src="assets\plus.svg" 
-						         height ="30" width="30" /></a>
-								</button>
+								
 						 </div>
 					 </div>
 					 <?php }?>

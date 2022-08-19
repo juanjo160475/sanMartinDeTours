@@ -41,7 +41,7 @@ public function save($param,$archivo){
         $sql = "UPDATE ".$this->table. " SET nombre_sede=?, direccion=?, telefono=? WHERE id=?";
         $stmt = $this->conection->prepare($sql);
         $res = $stmt->execute([$nombre, $direccion, $telefono, $id]);
-      //  echo $stmt->errorCode();
+        echo $stmt->errorCode();
     }else{
         
        
@@ -49,7 +49,7 @@ public function save($param,$archivo){
         $sql = "INSERT INTO ".$this->table. " (nombre_sede,direccion,telefono) values(?, ?, ?)";
         $stmt = $this->conection->prepare($sql);
         $stmt->execute([$nombre, $direccion,$telefono]);
-      //  echo $stmt->errorCode();
+        echo $stmt->errorCode();
         $id = $this->conection->lastInsertId();
         
     }	

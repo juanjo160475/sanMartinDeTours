@@ -45,7 +45,8 @@ abstract class  Controlador{
 	public function delete(){
 		$this->titulo_pagina  = 'Listado de notas';
 		$this->vista = 'delete_note';
-		return $this->noteObj->deleteNoteById($_POST["id"]);
+		$result =$this->noteObj->deleteNoteById($_POST["id"]);
+		return $result;
 	}
 
 }

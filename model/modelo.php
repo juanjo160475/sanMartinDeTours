@@ -44,14 +44,11 @@ abstract class Modelo{
 	public function deleteNoteById($id){
 		
 		$this->getConection();
-		/*$carpeta_destino = $_SERVER['DOCUMENT_ROOT'] .'/fundacion/imagenes/inicio/';
-		$data = $this->getNoteById($id);
-		$nombreArchivo = $data["foto"];
-		unlink($carpeta_destino.$nombreArchivo);*/
-	
 		$sql = "DELETE FROM ".$this->table." WHERE id  = ?";
 		$stmt = $this->conection->prepare($sql);
-		return $stmt->execute([$id]);
+		$stmt->execute([$id]);
+		var_dump ($stmt->errorInfo());
+		return $stmt->errorCode();
 	}
 
 	public function setTable ($nombreTabla){
