@@ -47,8 +47,9 @@ public function save($param,$archivo){
         $sql = "UPDATE ".$this->table. " SET id_imagen=?, id_sede=?, titulo=? ,
         descripcion=? ,fechaInicio=? ,fechafinal=? WHERE id=?";
         $stmt = $this->conection->prepare($sql);
-        $res = $stmt->execute([$idImagen, $idSede, $titulo, $descripcion,$fechaInicio,$fechaFinal]);
-      //  echo $stmt->errorCode();
+        $res = $stmt->execute([$idImagen, $idSede, $titulo, $descripcion,$fechaInicio,$fechaFinal,$id]);
+        var_dump ($stmt->errorInfo());
+        echo $stmt->errorCode();
     }else{
         
        
@@ -57,7 +58,7 @@ public function save($param,$archivo){
         descripcion, fechaInicio, fechafinal) values(?, ?, ?,?,?,?)";
         $stmt = $this->conection->prepare($sql);
         $stmt->execute([$idImagen, $idSede, $titulo, $descripcion,$fechaInicio,$fechaFinal]);
-      //  echo $stmt->errorCode();
+        echo $stmt->errorCode();
         $id = $this->conection->lastInsertId();
         
     }	

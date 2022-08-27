@@ -1,4 +1,4 @@
-<?php
+<?php/*
 $id = $titulo = $descripcion = $fechaInicio = $fechaFinal= $idImagen=$idSede="";
 
 if(isset($dataToView["data"]["editCurso"]["id"])) $id = $dataToView["data"]["editCurso"]["id"];
@@ -8,7 +8,7 @@ if(isset($dataToView["data"]["editCurso"]["titulo"])) $titulo = $dataToView["dat
 if(isset($dataToView["data"]["editCurso"]["descripcion"])) $descripcion = $dataToView["data"]["editCurso"]["descripcion"];
 if(isset($dataToView["data"]["editCurso"]["fechaInicio"])) $fechaInicio= $dataToView["data"]["editCurso"]["fechaInicio"];
 if(isset($dataToView["data"]["editCurso"]["fechafinal"])) $fechaFinal= $dataToView["data"]["editCurso"]["fechafinal"];
-?>
+*/?>
 <div class="row">
 	<?php
 	if(isset($_GET["response"]) and $_GET["response"] === true){
@@ -22,82 +22,59 @@ if(isset($dataToView["data"]["editCurso"]["fechafinal"])) $fechaFinal= $dataToVi
 
 	?>
 
-<h1>Ingresar Cursos  <br>   <button id="botonAgregar">Agregar imagen y sede seleccionadas</button> </h1>
+
 <form action="index.php?controller=cursos&action=save" method="POST">
              <div class="form-group" >
-             <input type="hidden" name="id" value="<?php echo $id; ?>" /> 
+             <input type="hidden" id="id-curso" name="id" value="" /> 
              <input type="hidden" name="model" value="cursosModel" /> 
              <label for="formGroupExampleInput">Titulo</label>
                
              <input type="text" id ="titulo" class="form-control" name="titulo"
-                 value="<?php echo $titulo; ?>"
+                 value=""
                  placeholder="Nombre">
              </div>
             
              <div class="form-group">
-               <label for="formGroupExampleInput2">Id imagen</label>
+               <label for="imagen">Id imagen</label>
                <input type="text" id= "imagen" class="form-control" name="id_imagen"
-                value= "<?php echo $idImagen; ?>"
+                value= ""
                 placeholder="imagen">
              </div>
 
              <div class="form-group">
-               <label for="formGroupExampleInput2">Id sede</label>
+               <label for="sede">Id sede</label>
                <input type="text" id= "sede" class="form-control" name="id_sede"
-                value="<?php echo $idSede; ?>"
+                value=""
                 placeholder="sede">
              </div>
 
              <div class="form-group">
-               <label for="formGroupExampleInput2">Descripcion</label>
-               <input type="text" class="form-control" name="descripcion"
-                value="<?php echo $descripcion; ?>"
+               <label for="descripcion">Descripcion</label>
+               <input type="text" id="descripcion" class="form-control" name="descripcion"
+                value=""
                 placeholder="Descripcion">
              </div>
       <br>       
              <div class="form-group">
-             <label for="formGroupExampleInput">Inicio: </label>
+             <label for="inicio">Inicio: </label>
                   <input type="date" id="inicio" name="fechaInicio"
-                  min="2021-01-01" max="2030-12-31"  value="<?php echo $fechaInicio; ?>" >
+                   value="" >
             </div>
 <br>
             <div class="form-group">
-             <label for="formGroupExampleInput">Final: </label>
+             <label for="final">Final: </label>
                   <input type="date" id="final" name="fechaFinal"
-                  min="2021-01-01" max="2030-12-31"  value="<?php echo $fechaFinal; ?>" >
+                    value="" >
             </div>
                
         <br>    
             <div class="form-group">  
                 <input type="submit" value="Guardar" class="btn btn-primary"/>
             
-                <a class="btn btn-outline-danger" href="index.php?controller=listCursos&action=list">Cancelar</a>
+               
              </div>
              
              
 </form>
 
-                              <script>
-                                   document.getElementById('botonAgregar').addEventListener('click', function() {
-                                   // let valorActivo = document.querySelector('input[name="status"]:checked').value; // Esto tiene el problema de que puede que un elemento no esté activo, entonces no se podría acceder al value de un null, lo que sería un error en tiempo de ejecución
-                                   let sedeElegida = document.querySelector('input[name="sede"]:checked');
-                                   let imagenElegida = document.querySelector('input[name="imagen"]:checked');
-                                   if(sedeElegida) {
-                                          
-                                          document.getElementById('sede').value=sedeElegida.value;
-                                   } else {
-                                          alert('Falta agregar sede');
-                                   }
-                                  
-                                    if(imagenElegida) {
-                                          
-                                          document.getElementById('imagen').value=imagenElegida.value;
-                                   } else {
-                                          alert('Falta agreger una imagen');
-                                   }
-                                   });
-                                   
-                                   
-                                  
-                          
-                            </script>
+                              

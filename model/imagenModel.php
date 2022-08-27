@@ -44,17 +44,25 @@ public function save($param,$archivo){
 }
      /* Delete imagen sobrreescribe*/
     public function deleteNoteById($id){
-		
-    $this->getConection();
-    $carpeta_destino = $_SERVER['DOCUMENT_ROOT'] .'/fundacion/assets/img/cursos/';
-    $data = $this->getNoteById($id);
-    $nombreArchivo = $data["nombreImagen"];
-    unlink($carpeta_destino.$nombreArchivo);
-
-    $sql = "DELETE FROM ".$this->table." WHERE id  = ?";
+        $this->getConection();
+        $data = $this->getNoteById($id);
+        $sql = "DELETE FROM ".$this->table." WHERE id  = ?";
 		$stmt = $this->conection->prepare($sql);
-		return $stmt->execute([$id]);
-   
+	    $stmt->execute([$id]);
+        var_dump ($stmt->errorInfo());
+        $error = $stmt->errorCode();
+            
+        if ($error == 0) 
+        {
+             $carpeta_destino = $_SERVER['DOCUMENT_ROOT'] .'/fundacion/assets/img/cursos/';
+             $nombreArchivo = $data["nombreImagen"];
+             unlink($carpeta_destino.$nombreArchivo);
+        }
+
+       
+        
+
+        return $error;
 }
 
 	

@@ -62,7 +62,192 @@ if(isset($_SESSION["usuario"]))
 	<?php   
             }// fin de if para entrar las imagenes
     ?>
+
+
+<div class="contenedor-titulo">
+        <h3>Imagenes de cursos</h3> 
 		
+		                      <button type="button"  data-bs-toggle="modal" data-bs-target="#guardar-imagen"> 
+							   <img src="assets\plus.svg" />
+								</button>
+      </div>    
+  
+  
+  
+    <div class="contenedor-principal">
+
+        <button role="button" id="flecha-izquierda" class="flecha-izquierda">
+        <i class="fa-solid fa-angle-left"></i>  </button>
+        <div class="contenedor-carrousel">
+            <div class="carrousel">
+				<?php
+					foreach($dataToView["data"] ["imagenes"] as $note) { ?>
+			 			<div class="imagen">
+								<a href="#!">
+									<img src="assets\img\cursos\<?php echo $note['nombreImagen'];?>" 
+									 alt="">
+								</a>
+							     <div class="btn-edicion">
+								   <button role ="buton"  
+									onclick=
+									"eliminar('<?php echo $note['nombreImagen'];?>','<?php echo $note['id'];?>','index.php?controller=cursos&action=delete&model=imagenModel');
+									" data-bs-toggle="modal" data-bs-target="#eliminar"> 
+									<a>
+									<img src="assets\delete.svg" />
+								    </a>
+									</button>
+									<input type="radio" name="imagen"  id=<?php echo $note['id']; ?> value= <?php echo $note['id'];?>> 
+								     
+							     
+						       </div>  
+						</div>
+						 
+						 
+			 	 <?php  } ?>
+             
+			</div>
+
+        </div>
+          <button role="button" id="flecha-derecha" class="flecha-derecha">
+          <i class="fa-solid fa-angle-right"></i>  </button>
+ 
+
+   </div>
+
+   <!-- sedes carrusel -->
+   <div class="contenedor-titulo">
+        <h3>Sedes</h3> 
+		
+		                      <button type="button"  data-bs-toggle="modal" data-bs-target="#guardar-curso"> 
+							   <img src="assets\plus.svg" />
+								</button>
+      </div>    
+  
+<div class="contenedor-principal">
+
+				<button role="button" id="flecha-izquierda" class="flecha-izquierda">
+				<i class="fa-solid fa-angle-left"></i>  </button>
+		
+	<div class="contenedor-carrousel">
+		<div class="carrousel">
+			<?php
+		
+			  foreach($dataToView["data"] ["sedes"] as $note) { ?>
+					<div class="imagen">
+							<a href="#!">
+								<div class="mi-card">
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item">Sede: <?php echo $note['nombre_sede'];?></li>
+											<li class="list-group-item" >Id: <?php echo $note['id'];?></li>
+											<li class="list-group-item">Direccion: <?php echo $note['direccion'];?></li>
+											<li class="list-group-item">Telefono: <?php echo $note['telefono'];?></li>
+										</ul>
+										<br>
+										<div class="card-footer">
+									
+											<div class="btn-edicion">
+												<button role ="button"  
+													onclick=
+													"eliminar('<?php echo $note['nombre_sede'];?>',
+													'<?php echo $note['id'];?>','index.php?controller=cursos&action=delete&model=sedeModelo');
+													" data-bs-toggle="modal" data-bs-target="#eliminar"> 
+													<img src="assets\delete.svg" />
+											    </button>
+												
+												<input type="radio" name="sede" id=<?php echo $note['id']; ?> value= <?php echo $note['id']; ?>> 
+											
+												<button role="button" data-bs-toggle="modal" data-bs-target="#guardar-sede"
+												  onclick= "editarSede('<?php echo $note['id'];?>','<?php echo $note['nombre_sede'];?>',
+												 '<?php echo $note['direccion'];?>','<?php echo $note['telefono'];?>' )"> 
+													<img src="assets\edit.svg" /> </a>
+												</button>
+											</div>
+										</div>
+								</div>
+							</a>
+								
+						 
+					</div>
+				 
+				 
+		  <?php  } ?>
+	 
+	  </div>
+
+   </div>
+		<button role="button" id="flecha-derecha" class="flecha-derecha">
+		<i class="fa-solid fa-angle-right"></i>  </button>
+
+
+</div>
+
+ <!-- cursos carrusel -->
+ <div class="contenedor-titulo">
+        <h3>Cursos</h3> 
+		
+  </div>    
+  
+<div class="contenedor-principal">
+
+				<button role="button" id="flecha-izquierda" class="flecha-izquierda">
+				<i class="fa-solid fa-angle-left"></i>  </button>
+		
+	<div class="contenedor-carrousel">
+		<div class="carrousel">
+			<?php
+		
+			  foreach($dataToView["data"] ["cursos"] as $note) { ?>
+					<div class="imagen">
+							<a href="#!">
+								<div class="mi-card">
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item">Titulo: <?php echo $note['titulo'];?></li>
+											<li class="list-group-item" >Id: <?php echo $note['id'];?></li>
+											<li class="list-group-item">Fecha: <?php echo $note['fechaInicio'];?></li>
+											<li class="list-group-item">Codigo sede: <?php echo $note['id_sede'];?></li>
+										</ul>
+										<br>
+										<div class="card-footer">
+									
+											<div class="btn-edicion">
+												<button role ="button"  
+													onclick=
+													"eliminar('<?php echo $note['titulo'];?>',
+													'<?php echo $note['id'];?>','index.php?controller=cursos&action=delete&model=sedeModelo');
+													" data-bs-toggle="modal" data-bs-target="#eliminar"> 
+													<img src="assets\delete.svg" />
+											    </button>
+												
+											
+											
+												<button role="button" data-bs-toggle="modal" data-bs-target="#guardar-curso"
+												  onclick= "editarCurso('<?php echo $note['id'];?>','<?php echo $note['id_imagen'];?>',
+												 '<?php echo $note['id_sede'];?>','<?php echo $note['titulo'];?>','<?php echo $note['descripcion'];?>'
+												 ,'<?php echo $note['fechaInicio'];?>','<?php echo $note['fechafinal'];?>' )"> 
+													<img src="assets\edit.svg" /> </a>
+												</button>
+											</div>
+										</div>
+								</div>
+							</a>
+								
+						 
+					</div>
+				 
+				 
+		  <?php  } ?>
+	 
+	  </div>
+
+   </div>
+		<button role="button" id="flecha-derecha" class="flecha-derecha">
+		<i class="fa-solid fa-angle-right"></i>  </button>
+
+
+</div>
+
+
+   									
 
 	<section class="todoscursos">
 		
@@ -156,12 +341,13 @@ if(isset($_SESSION["usuario"]))
 		</div>
 		
 	</section>
-	
+	<h1>Ingresar Cursos  <br>   <button id="botonAgregar">Agregar imagen y sede seleccionadas</button> </h1>
 	
 
 	
  <?php 
  require_once 'view\administrador\formularioCurso.php';
+ require_once 'view\administrador\modalImagenes.html';
 } else {
 	echo "lo siento mucho";
 }

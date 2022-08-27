@@ -1,0 +1,121 @@
+
+
+  <!-- Modal eliminar-->
+  <div class="modal fade" id="eliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Eliminar</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         
+          <form class="form" action="" method="POST">
+            
+            <div class="alert alert-warning">
+              <p>¿Confirma que desea eliminar esta nota?:</p>
+              <label for="mostrar-nom-foto"> Nombre :</label>
+              <input id="mostrar-nom-foto" readonly/> <br>
+              <label for="id-imagen"> id:</label>
+              <input  id="id-imagen" value="" name="id" readonly/>
+            </div>
+            <input type="submit" value="Eliminar" class="btn btn-danger"/>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </form>
+       
+        </div>
+        <div class="modal-footer">
+          
+         
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- Modal guardar imagen-->
+<div class="modal fade" id="guardar-imagen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form action="index.php?controller=cursos&action=save" method="POST" enctype="multipart/form-data">
+             
+          <div class="form-group" >
+           <input type="hidden" name="model" value="imagenModel" /> 
+           </div>
+          
+           <div class="form-group" >
+           <input type="file" name="imagen" >
+           </div>
+
+           
+           <input type="submit" value="Guardar" class="btn btn-primary"/>
+          
+          
+        </form>
+     
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--guardar sedes-->
+<div class="modal fade" id="guardar-sede" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form action="index.php?controller=cursos&action=save" method="POST">
+          <div class="form-group" >
+          <input type="hidden" name="id" value="" id= "id"/> 
+          <input type="hidden" name="model" value="sedeModelo" /> 
+          <label for="formGroupExampleInput">Nombre de sede</label>
+             <input type="text" class="form-control" name="nombre"
+              value="" id="nombre"
+              placeholder="Nombre" >
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Direccion de sede</label>
+            <input type="text" class="form-control" name="direccion"
+             value="" id="direccion"
+             placeholder="Direccion">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput">Telefono de sede</label>
+             <input type="text" class="form-control" name="telefono" 
+             value=""  id="telefono"
+             placeholder="Telefono">
+             <input type="submit" value="Guardar" class="btn btn-primary"/>
+             
+             
+          </div>
+          
+          
+</form>
+     
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
