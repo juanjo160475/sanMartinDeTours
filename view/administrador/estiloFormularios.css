@@ -1,16 +1,24 @@
+.cursos{
+    border-bottom: 1px solid #000;
+margin: 10px;
+}
+
 /*contenedor titulos*/
 .contenedor-titulo {
+ margin: 30px;
     display: flex;
     justify-content: space-between;
     align-items: end;
 
 }
 .contenedor-titulo h3{
-   
+
     font-size: 30px;
 }
 
-
+.contenedor-titulo button{
+background: green;
+}
 
 
 /* contenedor ´principal y flechas  */
@@ -70,7 +78,8 @@ background: rgba(0, 0,0, .9);
     min-width: 20%;
     transition: .3s all ease;
     box-shadow: 5px 5px 10px rgba(0, 0,0, 0.3);
-
+    padding: 0%;
+   
 }
 
 .contenedor-carrousel .carrousel .imagen.hover{
@@ -85,19 +94,35 @@ height: 100%;
 vertical-align: top;
 
 }
-.contenedor-carrousel .carrousel .imagen .mi-card {
-  
-    width: 100%;
-    height: 100%;
-    vertical-align: top;
+.contenedor-carrousel .carrousel .imagen .datos {
+    position: absolute;
+    top:10%;
+    left: 5%;
     
-    
+}
+.contenedor-carrousel .carrousel .imagen .btn-eliminar {
+        position: absolute;
+        bottom:0%;
+        left: 5%;
+        
+}
+.contenedor-carrousel .carrousel .imagen .btn-editar {
+    position: absolute;
+    bottom: 0%;
+    right: 5%;
+}
+.contenedor-carrousel .carrousel .imagen .btn-eliminar button {
+
+border-radius: 60px;
+}
+.contenedor-carrousel .carrousel .imagen .btn-editar button{
+    border-radius: 30px;
     }
 
-.contenedor-carrousel .carrousel .imagen .btn-edicion {
-      position: absolute;
-     bottom: 0%;
-     left: 0%;
+.contenedor-carrousel .carrousel .imagen .btn-seleccionar {
+position: absolute;
+   bottom: 0%;
+   right: 50%;
 }
 
 /* media queries */

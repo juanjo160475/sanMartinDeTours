@@ -1,20 +1,35 @@
-const fila = document.querySelector('.contenedor-carrousel');
+/*llamada a funciones */
 const imagen = document.querySelectorAll('.imagen');
-
+const fila = document.getElementById('carrousel-imagenes');
+const filaSedes = document.getElementById('carrousel-sedes');
+const filaCursos = document.getElementById('carrousel-cursos');
 const flechaIzquierda = document.getElementById('flecha-izquierda');
 const flechaDerecha = document.getElementById('flecha-derecha');
+const flechaIzSede = document.getElementById('flecha-izquierda-sede');
+const flechaDerSede = document.getElementById('flecha-derecha-sede');
+const flechaIzCurso = document.getElementById('flecha-izquierda-curso');
+const flechaDerCurso = document.getElementById('flecha-derecha-curso');
+
+initFlecha (flechaIzquierda,flechaDerecha,fila);
+initFlecha (flechaIzSede,flechaDerSede,filaSedes);
+initFlecha (flechaIzCurso,flechaDerCurso,filaCursos);
 const btnEliminar = document.querySelectorAll('.btn-edicion img');
 
 
+/* listener de botones flechas*/ 
+function initFlecha(fIzquierda, fDerecha,  fil) {
 
-flechaDerecha.addEventListener('click', () => {
-    fila.scrollLeft += fila.offsetWidth;
+fDerecha.addEventListener('click', () => {
+    fil.scrollLeft += fil.offsetWidth;
 });
-flechaIzquierda.addEventListener('click', () => {
-    fila.scrollLeft -= fila.offsetWidth;
+fIzquierda.addEventListener('click', () => {
+    fil.scrollLeft -= fil.offsetWidth;
 });
 
-
+}
+/* inicio de variables */
+function inicioVariables() {
+}
 
 imagen.forEach((element) => {
 

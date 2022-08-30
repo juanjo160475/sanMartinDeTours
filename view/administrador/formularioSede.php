@@ -26,6 +26,14 @@ if(isset($dataToView["data"]["telefono"])) $telefono = $dataToView["data"]["tele
 
 	?>
 
+
+
+
+		
+	
+
+
+
 <form action="index.php?controller=cursos&action=save" method="POST">
              <div class="form-group" >
              <input type="hidden" name="id" value="<?php echo $id; ?>" /> 

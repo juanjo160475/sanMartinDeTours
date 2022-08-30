@@ -1,61 +1,73 @@
-	
+<script>
+        // se oculta el header
+        const cabecera = document.body.querySelector('#mainNav');
+        cabecera.style.display = 'none' 
+        
+</script>
+
 	<?php 
 	session_start();
 if(isset($_SESSION["usuario"]))
 {
-  if(count($dataToView["data"])>0){//en este if filtra para entrar al carrucel
-  
-   ?>
-	<section>
+    if(count($dataToView["data"])>0){//en este if filtra para entrar al carrucel
+    ?>
+	<section class="cursos">
 
 
+				<div class="contenedor-titulo">
+			<h3>Imagenes para los cursos
+					<button type="button" title="agregar imagen" data-bs-toggle="modal" data-bs-target="#guardar-imagen"> 
+						<img src="assets\plus.svg" />
+					</button>
+				</div>
+			</h3>
+			
+			
+				<div class="contenedor-principal">
 
-	<div class="container-fluid headercursos" >	
-		   <div class="row">
-			    <h1 class="text-center"><b>Imagenes</b> <button type="button"> 
-							     <a href="index.php?controller=cursos&action=editImagen">
-								 <img src="assets\plus.svg" 
-						         height ="30" width="30" /></a>
-								</button></h1>
-				
-				<?php 
-					
-                foreach($dataToView["data"] ["imagenes"] as $note) { 
-					
-                 ?>
-				
-				<div class="col-sm-4 col-md-4">
-               		<div class="thumbnail">
-                    	<img src = "assets\img\cursos\<?php echo $note['nombreImagen'];?>"
-						width="250" height="160" alt="">
-                    	<div class="caption">
-					        	<h5 class="mb-0 text-center"> <?php echo $note['id'];?></h5>
-                       		 <p>
-                               <br/>                  
-							      <!-- ******** botones delete, edit, nueva imagen***** -->
-							   
-
-								<button type="button"> 
-							     <a href="index.php?controller=cursos&action=confirmDelete&id=
-                                 <?php echo $note['id']; ?>&model=imagenModel">
-								 <img src="assets\delete.svg" 
-						         height ="30" width="30" /></a>
-								</button>
-
-								<input type="radio" name="imagen" value= <?php echo $note['id'];?> id="interesado"> 
-								<label for="interesado">Agregar al nuevo curso</label> 
-
-								
-                        	</p>
-                  	  </div>
-               	   </div>
-               </div>
-
-        		
-						<?php  }//fin de for ?>
-		    </div>		
+					<button role="button" id="flecha-izquierda" class="flecha-izquierda">
+					<i class="fa-solid fa-angle-left"></i>  </button>
+					<div class="contenedor-carrousel" id="carrousel-imagenes">
+						<div class="carrousel">
+							<?php
+								foreach($dataToView["data"] ["imagenes"] as $note) { ?>
+									<div class="imagen">
+											<a href="#!">
+												<img src="assets\img\cursos\<?php echo $note['nombreImagen'];?>" 
+												alt="">
+												
+												<div class="btn-eliminar">
+													<button role ="buton"  
+													onclick=
+													"eliminar('<?php echo $note['nombreImagen'];?>','<?php echo $note['id'];?>','index.php?controller=cursos&action=delete&model=imagenModel');
+													" data-bs-toggle="modal" data-bs-target="#eliminar"> 
+													<img src="assets\delete.svg" />
+													</button>
+												</div> 
+													
+												<div class="btn-seleccionar">	
+													<input type="radio"  name="imagen"  id=<?php echo $note['id']; ?> value= <?php echo $note['id'];?>>
+													
+												</div>  
+											</a>
+											
+									</div>
+									
+									
+							<?php  } ?>
 						
-		</div>			
+						</div>
+
+					</div>
+					<button role="button" id="flecha-derecha" class="flecha-derecha">
+					<i class="fa-solid fa-angle-right"></i>  </button>
+			
+
+			</div>
+
+						
+							
+					
 				
 			
 	</section>
@@ -63,291 +75,130 @@ if(isset($_SESSION["usuario"]))
             }// fin de if para entrar las imagenes
     ?>
 
+<section class="cursos">
+<!-- sedes carrusel -->
+    <div class="contenedor-titulo">
+        <h3>Sedes
+        <button type="button" title="agregar sede" data-bs-toggle="modal" data-bs-target="#guardar-sede"> 
+        <img src="assets\plus.svg" />
+		</button>
+		</h3>
+    </div>    
+<div class="contenedor-principal">
 
-<div class="contenedor-titulo">
-        <h3>Imagenes de cursos</h3> 
+				<button role="button" id="flecha-izquierda-sede" class="flecha-izquierda">
+				<i class="fa-solid fa-angle-left"></i>  </button>
 		
-		                      <button type="button"  data-bs-toggle="modal" data-bs-target="#guardar-imagen"> 
-							   <img src="assets\plus.svg" />
-								</button>
-      </div>    
-  
-  
-  
-    <div class="contenedor-principal">
-
-        <button role="button" id="flecha-izquierda" class="flecha-izquierda">
-        <i class="fa-solid fa-angle-left"></i>  </button>
-        <div class="contenedor-carrousel">
-            <div class="carrousel">
-				<?php
-					foreach($dataToView["data"] ["imagenes"] as $note) { ?>
-			 			<div class="imagen">
-								<a href="#!">
-									<img src="assets\img\cursos\<?php echo $note['nombreImagen'];?>" 
-									 alt="">
+	<div class="contenedor-carrousel" id="carrousel-sedes" >
+		<div class="carrousel">
+			<?php
+			foreach($dataToView["data"] ["sedes"] as $note) { ?>
+					<div class="imagen">
+							<a href="#!">
+								<img src="assets/img/papel.jpg" alt="">
+													<div class="datos">
+														<h3> <?php echo $note['nombre_sede'];?></h2>
+														<ul>
+															<!--li>Id: <?php echo $note['id'];?></li-->
+															<li>Direccion: <?php echo $note['direccion'];?></li>
+															<li>Telefono: <?php echo $note['telefono'];?></li>
+														</ul>
+													</div>
+													<br>
+													
+												
+														<div class="btn-eliminar">
+																<button role ="button"  
+																	onclick=
+																	"eliminar('<?php echo $note['nombre_sede'];?>',
+																	'<?php echo $note['id'];?>','index.php?controller=cursos&action=delete&model=sedeModelo');
+																	" data-bs-toggle="modal" data-bs-target="#eliminar"> 
+																	<img src="assets\delete.svg" />
+																</button>
+														</div>
+																	<div class="btn-seleccionar">	
+																		<input type="radio" name="sede" id=<?php echo $note['id']; ?> value= <?php echo $note['id']; ?>> 
+																	</div>
+														<div class="btn-editar">
+																<button role="button" data-bs-toggle="modal" data-bs-target="#guardar-sede" onclick= "editarSede('<?php echo $note['id'];?>','<?php echo $note['nombre_sede'];?>',
+																	'<?php echo $note['direccion'];?>','<?php echo $note['telefono'];?>' )"> 
+																	<img src="assets\edit.svg" /> </a>
+																</button>
+														</div>
+												
+									
 								</a>
-							     <div class="btn-edicion">
-								   <button role ="buton"  
-									onclick=
-									"eliminar('<?php echo $note['nombreImagen'];?>','<?php echo $note['id'];?>','index.php?controller=cursos&action=delete&model=imagenModel');
-									" data-bs-toggle="modal" data-bs-target="#eliminar"> 
-									<a>
-									<img src="assets\delete.svg" />
-								    </a>
-									</button>
-									<input type="radio" name="imagen"  id=<?php echo $note['id']; ?> value= <?php echo $note['id'];?>> 
-								     
-							     
-						       </div>  
-						</div>
-						 
-						 
-			 	 <?php  } ?>
-             
-			</div>
-
-        </div>
-          <button role="button" id="flecha-derecha" class="flecha-derecha">
-          <i class="fa-solid fa-angle-right"></i>  </button>
- 
-
-   </div>
-
-   <!-- sedes carrusel -->
-   <div class="contenedor-titulo">
-        <h3>Sedes</h3> 
-		
-		                      <button type="button"  data-bs-toggle="modal" data-bs-target="#guardar-curso"> 
-							   <img src="assets\plus.svg" />
-								</button>
-      </div>    
-  
-<div class="contenedor-principal">
-
-				<button role="button" id="flecha-izquierda" class="flecha-izquierda">
-				<i class="fa-solid fa-angle-left"></i>  </button>
-		
-	<div class="contenedor-carrousel">
-		<div class="carrousel">
-			<?php
-		
-			  foreach($dataToView["data"] ["sedes"] as $note) { ?>
-					<div class="imagen">
-							<a href="#!">
-								<div class="mi-card">
-										<ul class="list-group list-group-flush">
-											<li class="list-group-item">Sede: <?php echo $note['nombre_sede'];?></li>
-											<li class="list-group-item" >Id: <?php echo $note['id'];?></li>
-											<li class="list-group-item">Direccion: <?php echo $note['direccion'];?></li>
-											<li class="list-group-item">Telefono: <?php echo $note['telefono'];?></li>
-										</ul>
-										<br>
-										<div class="card-footer">
 									
-											<div class="btn-edicion">
-												<button role ="button"  
-													onclick=
-													"eliminar('<?php echo $note['nombre_sede'];?>',
-													'<?php echo $note['id'];?>','index.php?controller=cursos&action=delete&model=sedeModelo');
-													" data-bs-toggle="modal" data-bs-target="#eliminar"> 
-													<img src="assets\delete.svg" />
-											    </button>
-												
-												<input type="radio" name="sede" id=<?php echo $note['id']; ?> value= <?php echo $note['id']; ?>> 
-											
-												<button role="button" data-bs-toggle="modal" data-bs-target="#guardar-sede"
-												  onclick= "editarSede('<?php echo $note['id'];?>','<?php echo $note['nombre_sede'];?>',
-												 '<?php echo $note['direccion'];?>','<?php echo $note['telefono'];?>' )"> 
-													<img src="assets\edit.svg" /> </a>
-												</button>
-											</div>
-										</div>
-								</div>
-							</a>
-								
-						 
 					</div>
-				 
-				 
-		  <?php  } ?>
-	 
-	  </div>
-
-   </div>
-		<button role="button" id="flecha-derecha" class="flecha-derecha">
-		<i class="fa-solid fa-angle-right"></i>  </button>
-
-
-</div>
-
- <!-- cursos carrusel -->
- <div class="contenedor-titulo">
-        <h3>Cursos</h3> 
-		
-  </div>    
-  
-<div class="contenedor-principal">
-
-				<button role="button" id="flecha-izquierda" class="flecha-izquierda">
-				<i class="fa-solid fa-angle-left"></i>  </button>
-		
-	<div class="contenedor-carrousel">
-		<div class="carrousel">
-			<?php
-		
-			  foreach($dataToView["data"] ["cursos"] as $note) { ?>
-					<div class="imagen">
-							<a href="#!">
-								<div class="mi-card">
-										<ul class="list-group list-group-flush">
-											<li class="list-group-item">Titulo: <?php echo $note['titulo'];?></li>
-											<li class="list-group-item" >Id: <?php echo $note['id'];?></li>
-											<li class="list-group-item">Fecha: <?php echo $note['fechaInicio'];?></li>
-											<li class="list-group-item">Codigo sede: <?php echo $note['id_sede'];?></li>
-										</ul>
-										<br>
-										<div class="card-footer">
-									
-											<div class="btn-edicion">
-												<button role ="button"  
-													onclick=
-													"eliminar('<?php echo $note['titulo'];?>',
-													'<?php echo $note['id'];?>','index.php?controller=cursos&action=delete&model=sedeModelo');
-													" data-bs-toggle="modal" data-bs-target="#eliminar"> 
-													<img src="assets\delete.svg" />
-											    </button>
-												
-											
-											
-												<button role="button" data-bs-toggle="modal" data-bs-target="#guardar-curso"
-												  onclick= "editarCurso('<?php echo $note['id'];?>','<?php echo $note['id_imagen'];?>',
-												 '<?php echo $note['id_sede'];?>','<?php echo $note['titulo'];?>','<?php echo $note['descripcion'];?>'
-												 ,'<?php echo $note['fechaInicio'];?>','<?php echo $note['fechafinal'];?>' )"> 
-													<img src="assets\edit.svg" /> </a>
-												</button>
-											</div>
-										</div>
-								</div>
-							</a>
-								
-						 
-					</div>
-				 
-				 
-		  <?php  } ?>
-	 
-	  </div>
-
-   </div>
-		<button role="button" id="flecha-derecha" class="flecha-derecha">
-		<i class="fa-solid fa-angle-right"></i>  </button>
-
-
-</div>
-
-
-   									
-
-	<section class="todoscursos">
-		
-	     
-		
-		<div class="container-fluid">
-			<div class="mt-5 row text-center">
-				<div class="col-md-6 border-end">
-				
-				<div class="pt-3 row text-center tituloscursos">
-				<h1>Sedes <button type="button" class="inscripcion btn btn-primary btn-sm align-end"> 
-							     <a href="index.php?controller=cursos&action=editSede">
-								 <img src="assets\plus.svg" 
-						         height ="30" width="30" /></a>
-								</button></h1>
-			    </div>
-				
-				<?php foreach($dataToView["data"] ["sedes"]as $note) {?>
-				    <div class="mt-1 card card-cursos l-bg-blue-dark">
-					
-					   <div class="card-body">
-							<div class="card-icon card-icon-large"></div>
-							 <h4 class="card-title"><?php echo $note['nombre_sede'];?></h4>
-							 <p class="card-text"><?php echo $note['id'];?></p>
-							
-							 <!-- ******** botones delete, edit, nueva SEDE***** -->
-							   <button type="button" class="inscripcion btn btn-primary btn-sm align-end" > 
-							     <a href="index.php?controller=cursos&action=editSede&id=
-                                 <?php echo $note['id']; ?>">
-								 <img src="assets\edit.svg" 
-						         height ="30" width="30" /> </a>
-								</button>
-
-								<button type="button" class="inscripcion btn btn-primary btn-sm align-end"> 
-							     <a href="index.php?controller=cursos&action=confirmDelete&id=
-                                 <?php echo $note['id']; ?> & model=sedeModelo">
-								 <img src="assets\delete.svg" 
-						         height ="30" width="30" /></a>
-								</button>
-								<input type="radio" name="sede" value= <?php echo $note['id']; ?> id="interesado"> 
-								<label for="interesado">Agregar a nuevo curso</label> 
-
-								
-						 </div>
-					 </div>
-					 <?php }?>
+					<?php  } ?>
 				</div>
-				
-				
-				<div class="col">
+			</div>
+		<button role="button" id="flecha-derecha-sede" class="flecha-derecha">
+		<i class="fa-solid fa-angle-right"></i>  </button>
 
-				<div class="pt-3 row text-center tituloscursos">
-				<h1>Cursos <button type="button" class="inscripcion btn btn-primary btn-sm align-end"> 
-							     <a href="index.php?controller=cursos&action=editCurso" >
-								 <img src="assets\plus.svg" 
-						         height ="30" width="30" /></a>
-								</button></h1>
-			    </div>
-				<?php foreach($dataToView["data"] ["cursos"]as $note) {?>
-				    <div class="mt-1 card card-cursos l-bg-blue-dark">
-					
-					   <div class="card-body">
-							<div class="card-icon card-icon-large"></div>
-							 <h4 class="card-title"> <?php echo $note['titulo'];?></h4>
-							 <p class="card-fecha"><?php echo  date("d/m/y", strtotime($note['fechaInicio']));?></p>
-							 <p class="card-sede"><?php echo "sede: ".$note['id_sede'];?></p>
 
-							 <!-- ******** botones delete, edit, nuevo curso***** -->
-							   <button type="button" class="inscripcion btn btn-primary btn-sm align-end" > 
-							     <a href="index.php?controller=cursos&action=editCurso&id=
-                                 <?php echo $note['id']; ?>">
-								 <img src="assets/edit.svg" 
-						         height ="30" width="30" /> </a>
-								</button>
+</div>
+</section>
 
-								<button type="button" class="inscripcion btn btn-primary btn-sm align-end"> 
-								<a href="index.php?controller=cursos&action=confirmDelete&id=
-                                 <?php echo $note['id'];?>&model=cursosModel">
-								 <img src="assets/delete.svg" 
-						         height ="30" width="30" /></a>
-								</button>
+<section class="cursos">
+<!-- cursos carrusel -->
+    <div class="contenedor-titulo">
+        <h3>Cursos</h3> 
+	</div>    
 
-								
-						 </div>
-					 </div>
-					 <?php }?>
-					</div>
-				 
-			   </div>
-			 
-		</div>
+<div class="contenedor-principal">
+
+				<button role="button" id="flecha-izquierda-curso" class="flecha-izquierda">
+				<i class="fa-solid fa-angle-left"></i>  </button>
 		
-	</section>
-	<h1>Ingresar Cursos  <br>   <button id="botonAgregar">Agregar imagen y sede seleccionadas</button> </h1>
-	
+	<div class="contenedor-carrousel" id="carrousel-cursos">
+		<div class="carrousel">
+			<?php
+			foreach($dataToView["data"] ["cursos"] as $note) { ?>
+					<div class="imagen">
+							<a href="#!">
+								<img src="assets/img/papel.jpg" alt="">
+								<div class="datos">
+									<h2> <?php echo $note['titulo'];?></h2>
+											<ul>
+											<li>Inicio: <?php echo $note['fechaInicio'];?></li>
+											<li>Final: <?php echo $note['fechafinal'];?></li>
+											</ul>
+								</div>
+													<br>
+													
+								<div class="btn-eliminar">
+										<button role ="button"  
+										onclick=
+										"eliminar('<?php echo $note['titulo'];?>',
+										'<?php echo $note['id'];?>','index.php?controller=cursos&action=delete&model=sedeModelo');
+										" data-bs-toggle="modal" data-bs-target="#eliminar"> 
+										<img src="assets\delete.svg" />
+										</button>
+								</div>	
+											
+								<div class="btn-editar">
+									<button role="button" data-bs-toggle="modal" data-bs-target="#guardar-curso"
+								onclick= "editarCurso('<?php echo $note['id'];?>','<?php echo $note['id_imagen'];?>',
+									'<?php echo $note['id_sede'];?>','<?php echo $note['titulo'];?>','<?php echo $note['descripcion'];?>'
+									,'<?php echo $note['fechaInicio'];?>','<?php echo $note['fechafinal'];?>' )"> 
+									<img src="assets\edit.svg" /> </a>
+									</button>
+								</div>
+							</a>
+					</div>
 
-	
- <?php 
- require_once 'view\administrador\formularioCurso.php';
- require_once 'view\administrador\modalImagenes.html';
+					<?php  } ?>
+				</div>
+			</div>
+			<button role="button" id="flecha-derecha-curso" class="flecha-derecha">
+				<i class="fa-solid fa-angle-right"></i>  </button>
+			</div>
+			</section>
+	<h1>Ingresar Cursos  <br>   <button id="botonAgregar">Agregar imagen y sede seleccionadas</button> </h1>
+	<?php 
+	require_once 'view\administrador\formularioCurso.php';
+	require_once 'view\administrador\modalImagenes.html';
 } else {
 	echo "lo siento mucho";
 }
